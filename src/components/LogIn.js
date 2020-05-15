@@ -1,15 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState }   from 'react';
 import { TextField, Button } from '@material-ui/core';
+import loginService          from '../services/login';
 
 const LogIn = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    // const history                 = useHistory();
+    const [user,     setUser]     = useState(null);
 
-    const handleLogin = (event) => {
+    const handleLogin =  async (event) => {
         event.preventDefault();
-        console.log(username, password);
-        // history.push('/');        
+        try {
+          const user = await loginService.login({
+            username, password,
+          });
+
+          setUser(user);
+          setUsername('');
+          setPassword('');
+
+        } catch (exception) {
+          console.log('Wrong credentials');
+          setTimeout(() => {
+            console.log(null);
+          }, 5000);
+        }
     }
 
     return (
