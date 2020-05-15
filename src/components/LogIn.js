@@ -1,5 +1,4 @@
 import React from 'react';
-// import Blogs                 from './Blogs';
 import { TextField, Button } from '@material-ui/core';
 
 
@@ -7,29 +6,7 @@ const LogIn = ({
   handleLogin,
   setUsername,
   setPassword
-}) => {
-    // const [username, setUsername] = useState('');
-    // const [password, setPassword] = useState('');    
-
-    // const handleLogin =  async (event) => {
-    //     event.preventDefault();
-    //     try {
-    //       const user = await loginService.login({
-    //         username, password,
-    //       });
-    //       console.log('success!');
-    //       // setUser(user);
-    //       setUsername('');
-    //       setPassword('');
-        
-
-    //     } catch (exception) {
-    //       console.log('Wrong credentials');
-    //       setTimeout(() => {
-    //         console.log(null);
-    //       }, 5000);
-    //     }
-    // }
+}) => {   
 
     return (
       <div>

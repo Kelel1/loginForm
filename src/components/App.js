@@ -1,15 +1,31 @@
-import  React from 'react';
-import { useState }from 'react'
-import {Container, Grid} from '@material-ui/core';
-import LogIn from './LogIn';
-import Blogs from './Blogs';
+import  React                from 'react';
+import { useState, useEffect }          from 'react'
+import {Container, Grid}     from '@material-ui/core';
+import LogIn                 from './LogIn';
+import Blogs                 from './Blogs';
 import loginService          from '../services/login';
+import blogService           from '../services/blog'; 
+import axios from 'axios';
 
 
 const App = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState(''); 
   const [user,     setUser]     = useState(null);
+  // const [blogs, setBlogs]       = useState([]);
+
+
+  // Testing useEffect
+  // useEffect(() => {
+  //   console.log('effect');
+  //   axios
+  //     .get('http://localhost:4000/api/blogs')
+  //     .then(response => {
+  //       console.log('promise fullfilled');
+  //       setBlogs(response.data);
+  //     })
+  // }, []);
+  // console.log('render', blogs[3], 'blogs');
 
   const handleLogin =  async (event) => {
     event.preventDefault();
@@ -18,6 +34,7 @@ const App = () => {
         username, password,
       });
       console.log('success!');
+      blogService.setToken(user.token);
       setUser(user);
       setUsername('');
       setPassword('');
